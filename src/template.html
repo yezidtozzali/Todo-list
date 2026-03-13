@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"></head>
+<body>
+    <div id="grid">
+    <header  class="header">
+
+        <div class="left-header">
+        <span class="material-symbols-outlined icon-search">search</span> <input class="search" type="text" placeholder="Search">
+        </div>
+
+        <div class="right-header">
+            <button class="button-new-project new-project"><span class="material-symbols-outlined ">add_2</span><span>New project</span>
+            </button>
+            <img alt="Profile">
+        </div>
+
+    </header>
+
+    <div class="sidebar">
+        <div class="add-task add-new-task"><span class="material-symbols-outlined">add_2</span>
+        <p>Add a task</p>
+    </div>
+        
+        <ul>
+            <li class="inbox" tabindex="0"><span class="material-symbols-outlined icon-inbox">inbox</span>Inbox</li>
+
+            <li class="today" tabindex="0"><span class="material-symbols-outlined icon-today">calendar_today</span>Today</li>
+
+            <li class="soon" tabindex="0"><span class="material-symbols-outlined icon-soon">calendar_month</span>Soon</li>
+        </ul>
+
+        <ul class="projects">
+            <li>
+                <div class="projects-header" tabindex="0">
+                    <div class="profile-project">
+                    <img alt="Profile">
+                    <span>Projects</span>
+                    </div>
+
+                    <div class="symbols">
+                    <span class="material-symbols-outlined icon-project new-project hide">add_2</span>
+                    <span class="material-symbols-outlined  icon-project arrow-icon ">keyboard_arrow_right</span>
+                    </div>
+                </div>
+        <ul id="project-list"></ul>
+    </li>
+</ul>
+    </div>
+
+    <div class="content">
+
+    </div>
+
+
+
+
+
+
+    <dialog class="project-dialog">
+        <div class="span-project">
+        <span>Add project</span>
+        </div>
+        <form class="project-form"   action="">
+           <div>
+            <p>Name:</p>
+            <input type="text" id= "name-project-input" placeholder="Name" required>
+           </div>
+
+           <div>
+            <p>Description:</p>
+            <textarea id="description-project-input" placeholder="Description"> </textarea>
+           </div>
+
+           <div>
+            <p>Tag:</p>
+            <div class="buttons">
+            <button class="button-color" data-color="#6366f1"></button>
+            <button class="button-color" data-color="#22c55e"></button>
+            <button class="button-color" data-color="#ef4444"></button>
+            <button class="button-color" data-color="#f59e0b"></button>
+            <button class="button-color" data-color="#3b82f6"></button>
+            <button  class="button-color" data-color="#ec4899"></button>
+            </div>
+           </div>
+           <div class="submit-buttons">
+            <button class="close-button" type="button">Close</button>
+           <button type="submit" class="submit">Add</button>
+           </div>
+        </form>
+    </dialog>
+
+    <dialog class="task-dialog">
+        <form action="" class="task-form">
+
+            <div>
+                <input type="text" id="name-task-input" required placeholder="Write your task">
+            </div>
+
+            <div>
+                <input type="text" name="" id="description-task-input" placeholder="Description">
+            </div>
+
+            <div class="date-priority">
+                <input type="date" name="" id="date-task-input" required>
+
+                <select id="priority-task-input">
+                    <option value="" disabled selected>Priority</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                </select>
+            </div>
+
+            <div class="footer-task">
+                
+                <select name="" id="task-project">
+                </select>
+            
+
+            <div class="submit-task">
+            <button class="close-button-task" type="button">Close</button>
+           <button type="submit" class="submit-task-button">Add task</button>
+           </div>
+           </div>
+        </form>
+
+    </dialog>
+
+
+</body>
+</html>
