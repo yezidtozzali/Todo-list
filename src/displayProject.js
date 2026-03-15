@@ -1,4 +1,5 @@
 import displayProjectContent from "./displayContent";
+import { save } from "./localStorage";
 
 const displayProjects = (listProject) => {
     const arrow = document.querySelector(".arrow-icon");
@@ -21,6 +22,12 @@ const displayProjects = (listProject) => {
         const newProject = document.createElement("li");
         newProject.classList.add("project-li");
         
+        const spanDelete = document.createElement("span");
+        spanDelete.classList.add("material-symbols-outlined");
+        spanDelete.classList.add("option-icon");
+        spanDelete.textContent = "delete";
+        spanDelete.classList.add("hide");
+
         const tag = document.createElement("span");
         tag.classList.add("tag");
         tag.style.backgroundColor = project.color;
@@ -36,11 +43,31 @@ const displayProjects = (listProject) => {
             e.preventDefault();
             displayProjectContent(project, listProject);
             
-        })
+        });
+
+        newProject.addEventListener("mouseenter", () => {
+            spanDelete.classList.toggle("hide");
+            
+        });
+
+        newProject.addEventListener("mouseleave", () => {
+            spanDelete.classList.toggle("hide");
+            
+
+        });
+
+        spanDelete.addEventListener("click", (e) => {
+            e.stopPropagation();
+            const index = listProject.indexOf(project);
+            listProject.splice(index, 1);
+            save(listProject);
+            displayProjects(listProject);
+        });
         
         projectList.appendChild(newProject);
         newProject.appendChild(tag);
         newProject.appendChild(projectTitle);
+        newProject.appendChild(spanDelete);
 
         }
             
