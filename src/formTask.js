@@ -1,5 +1,6 @@
 import Task from "./task";
 import { save } from "./localStorage";
+import Project from "./project";
 
 let isEditing = false;
 let taskToEdit = null;
@@ -60,7 +61,14 @@ const formTask = (listProject, displayProjectContent) => {
             const project = selectedId === "Inbox"
             ? listProject.find(p => p.isInbox)
             : listProject.find(p => p.projectId === selectedId);
+
+            const oldProject = listProject.find(p => p.task.includes(taskToEdit));
+
+            const index = oldProject.task.indexOf(taskToEdit);
+            oldProject.task.splice(index, 1);
             
+            project.addtask(taskToEdit);
+
             displayProjectContent(project,listProject);
             dialogTask.close();
             taskForm.reset();
@@ -96,7 +104,15 @@ const formTask = (listProject, displayProjectContent) => {
         e.preventDefault();
         dialogTask.close();
         taskForm.reset();
+        isEditing = false;
     });
+
+    dialogTask.addEventListener("close", () => {
+        dialogTask.close();
+        taskForm.reset();
+        isEditing = false;
+    });
+
 
 
     

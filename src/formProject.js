@@ -58,6 +58,7 @@ projectForm.addEventListener("submit", (e) => {
     arrow.classList.add("rotate");
     projectList.classList.add("visible");
     save(listProject);
+    displayProjectContent(newProject, listProject);
 });
 
 

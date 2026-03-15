@@ -60,8 +60,13 @@ const displayProjects = (listProject) => {
             e.stopPropagation();
             const index = listProject.indexOf(project);
             listProject.splice(index, 1);
+
+            
             save(listProject);
             displayProjects(listProject);
+
+            const inboxProject = listProject.find(p => p.isInbox);
+            displayProjectContent(inboxProject, listProject);
         });
         
         projectList.appendChild(newProject);
