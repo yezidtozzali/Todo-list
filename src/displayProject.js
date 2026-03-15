@@ -1,6 +1,8 @@
 import displayProjectContent from "./displayContent";
 
 const displayProjects = (listProject) => {
+    const arrow = document.querySelector(".arrow-icon");
+
     const projectUl = document.getElementById("project-list");
 
     const projectList = document.getElementById("project-list");
@@ -17,6 +19,7 @@ const displayProjects = (listProject) => {
     listProject.forEach(project => {
         if (!project.isInbox){
         const newProject = document.createElement("li");
+        newProject.classList.add("project-li");
         
         const tag = document.createElement("span");
         tag.classList.add("tag");
@@ -32,6 +35,7 @@ const displayProjects = (listProject) => {
             content.innerHTML = "";
             e.preventDefault();
             displayProjectContent(project, listProject);
+            
         })
         
         projectList.appendChild(newProject);

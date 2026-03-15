@@ -103,8 +103,14 @@ body{
 }
 
 .content h2{
-    margin: 16px 0px;
+    margin: 16px 0 8px 0;
     font-size: 26px;
+}
+
+.description-project{
+    margin: 0 0 18px 27px;
+    font-size: 12px;
+    color: #8d8d8d;
 }
 
 .add-task{
@@ -157,6 +163,19 @@ ul{
     height: 20px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.project-li{
+    cursor: pointer;
+    width: auto;
+    padding: 8px 16px;
+}
+
+.project-li:hover{
+    background-color: #e4e4e49d;
+    border-radius: 8px;
+    transition: 0.1s ease;
+
 }
 
 .profile-project{

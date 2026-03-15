@@ -7,14 +7,19 @@ import displayProjects from "./displayProject";
 import formTask from "./formTask";
 import displayProjectContent from "./displayContent";
 import todayDisplay from "./todayDisplay";
+import soonDisplay from "./soonDisplay";
+import { load } from "./localStorage";
 
 
-let listProject = [];
+const savedData = load();
 
+let listProject = savedData ? savedData : [];
 
+if(!savedData){
 const myProject = new Project("Inbox", "");
 myProject.isInbox = true;
 listProject.push(myProject);
+};
 
 
 formProject(listProject);
@@ -30,6 +35,14 @@ today.addEventListener("click", (e) => {
 
     todayDisplay(listProject);
 
+});
+
+const soon = document.querySelector(".soon");
+
+soon.addEventListener("click", (e) => {
+    e.preventDefault()
+
+    soonDisplay(listProject);
 });
 
 
@@ -69,13 +82,21 @@ const projectList = document.getElementById("project-list");
 
 
 /*arrow on click--------------*/
-
+        const projects = document.querySelector(".projects-header");
         const arrow = document.querySelector(".arrow-icon");
 
-        arrow.addEventListener("click", (e) => {
+        projects.addEventListener("click", () => {
             arrow.classList.toggle("rotate");
             projectList.classList.toggle("visible");
         });
+
+        arrow.addEventListener("click", (e) => {
+            e.stopPropagation();
+            arrow.classList.toggle("rotate");
+            projectList.classList.toggle("visible");
+        });
+
+        
 
 
 

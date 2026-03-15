@@ -56,6 +56,7 @@ const displayProjectContent = (project, listProject) => {
     h2.textContent = project.name;
 
     const description = document.createElement("p");
+    description.classList.add("description-project");
     description.textContent = project.description;
 
     content.appendChild(divTitle)

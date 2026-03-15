@@ -1,9 +1,13 @@
 import Project from "./project";
 import displayProjects from "./displayProject";
 import displayProjectContent from "./displayContent";
+import { save } from "./localStorage";
 
 const formProject = (listProject) =>{
 
+
+const arrow = document.querySelector(".arrow-icon");
+const projectList = document.getElementById("project-list");
 
 const addProject = document.querySelectorAll(".new-project");
 const dialogProject = document.querySelector(".project-dialog");
@@ -51,6 +55,9 @@ projectForm.addEventListener("submit", (e) => {
     displayProjects(listProject);
     dialogProject.close();
     projectForm.reset();
+    arrow.classList.add("rotate");
+    projectList.classList.add("visible");
+    save(listProject);
 });
 
 

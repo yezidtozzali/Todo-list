@@ -1,12 +1,12 @@
-import { isToday } from "date-fns";
+import { isAfter } from "date-fns";
 import { format } from "date-fns";
 import createTaskElement from "./createTaskElement";
 import taskListener from "./taskListener";
 
 
-const todayDisplay = (listProject) =>{
+const soonDisplay = (listProject) =>{
 
-    const todayTasks = listProject.flatMap(project => project.task).filter(task => isToday(new Date(task.dueDate) ));
+    const soonTasks = listProject.flatMap(project => project.task).filter(task => isAfter(new Date(task.dueDate), new Date() ));
 
 
     const content = document.querySelector(".content");
@@ -15,15 +15,15 @@ const todayDisplay = (listProject) =>{
 
     const todayH2 = document.createElement("h2");
     todayH2.style.margin = "16px 27px 26px 27px";
-    todayH2.textContent = "Today";
+    todayH2.textContent = "Soon";
     content.appendChild(todayH2);
 
-    todayTasks.forEach(task => {
-        const taskProject = listProject.find(project => project.task.includes(task))
+    soonTasks.forEach(task => {
+        const taskProject = listProject.find(project => project.task.includes(task));
 
         const {divCheckTask, checkbox, editOption, deleteOption, divTask, nameTask, descriptionTask, dueDateTask} = createTaskElement(task);
 
-        taskListener(divTask, deleteOption, editOption, checkbox, task, taskProject, listProject, nameTask, descriptionTask, dueDateTask, () => todayDisplay(listProject));
+        taskListener(divTask, deleteOption, editOption, checkbox, task, taskProject, listProject, nameTask, descriptionTask, dueDateTask, () => soonDisplay(listProject));
 
         
     content.appendChild(divCheckTask);
@@ -73,4 +73,4 @@ const todayDisplay = (listProject) =>{
     content.appendChild(divAddTask);
 };
 
-export default todayDisplay;
+export default soonDisplay;

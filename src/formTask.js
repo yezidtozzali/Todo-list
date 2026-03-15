@@ -1,4 +1,5 @@
 import Task from "./task";
+import { save } from "./localStorage";
 
 let isEditing = false;
 let taskToEdit = null;
@@ -86,7 +87,7 @@ const formTask = (listProject, displayProjectContent) => {
         taskForm.reset();
 
         };
-
+        save(listProject)
     });
 
     const closeButton = document.querySelector(".close-button-task");
